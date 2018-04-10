@@ -1,0 +1,59 @@
+<div class="container">
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6 col">
+<h1 style="text-align:center">Sign up now</h1>
+<h4 style="text-align:center">Enter your details to get access:</h4>
+<form method="post" #userForm="ngForm" (ngSubmit)="onSubmit(user, userForm)">
+   
+   <div class="form-group">
+      <!-- <label for="first">First Name</label> -->
+        <input type="text" class="form-control" [class.invalid]="yname.touched && yname.invalid" [(ngModel)] = "user.fname"  #yname="ngModel" (change)="getModel(yname)" placeholder="Enter First Name" name="fname" pattern="[a-zA-Z]+" required>
+		<div [class.invalid]="yname.touched && yname.invalid" *ngIf="yname.touched && yname.invalid">
+		<span *ngIf="yname.errors.required">First Name is required</span>
+		<span *ngIf="yname.errors.pattern">Only Alphabets are accepted.</span>
+	</div>
+      </div>
+	  
+    <div class="form-group">
+      <!-- <label for="last">LastName</label> -->
+        <input type="text" class="form-control" [class.invalid]="xname.touched && xname.invalid" [(ngModel)] = "user.lname"  #xname="ngModel" (change)="getModel(xname)" placeholder="Enter the Last Name" name="lname" pattern="[a-zA-Z]+" required>
+		<div [class.invalid]="xname.touched && xname.invalid" *ngIf="xname.touched && xname.invalid">
+		<span *ngIf="xname.errors.required">Last Name is required</span>
+		<span *ngIf="xname.errors.pattern">Only Alphabets are accepted.</span>
+	</div>
+    </div>
+	
+	<div class="form-group">
+    <!-- <label class="sr-only" for="pwd">Password:</label> -->
+    <input type="text" class="form-control" placeholder="Enter the Address" name="address">
+  </div>
+  
+  
+	<div class="form-group">
+      <!-- <label for="email">Email Id</label> -->
+        <input type="email" class="form-control" [class.invalid]="tname.touched && tname.invalid" [(ngModel)] = "user.email"  #tname="ngModel" (change)="getModel(tname)" placeholder="Enter the Email Id" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+		<div [class.invalid]="tname.touched && tname.invalid" *ngIf="tname.touched && tname.invalid">
+		<span *ngIf="tname.errors.required">Email-Id is required</span>
+		<span *ngIf="tname.errors.pattern">Pattern not matched</span>
+	</div>
+    </div>
+	
+	<div class="form-inline">
+  <div class="form-group">
+    <!-- <label for="email">Email address:</label> -->
+    <input type="text" class="form-control" [class.invalid]="t1name.touched && t1name.invalid" [(ngModel)] = "user.contact"  #t1name="ngModel" (change)="getModel(t1name)"placeholder="Contact No" name="contact" pattern="[0-9]{10}" required>
+	<div [class.invalid]="t1name.touched && t1name.invalid" *ngIf="t1name.touched && t1name.invalid">
+		<span *ngIf="t1name.errors.required">Contact no is required</span>
+		<span *ngIf="t1name.errors.pattern">Pattern not matched</span>
+	</div>
+  </div>
+  </div>
+
+	</form>
+</div>
+<div class="col-sm-3"></div>
+<button type="submit" class="btn btn-primary btn-block">SEND</button>
+
+</div>
+</div>
